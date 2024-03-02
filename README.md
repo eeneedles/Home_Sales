@@ -1,1 +1,7 @@
 # Home_Sales
+
+This a repository using SparkSQL to run queries on a data set of home sales metrics data, create temporary views and partitions, and cache the data to compare query runtimes.
+
+The Home_Sales repository contains a jupyter notebook file called Home_Sales which contains all of the code for the creation, manipulation, querying, and testing of the data.  Also in the repository is a folder called p_df containing the cache data and a README file.
+
+To begin with, a csv file was read into a Spark DataFrame and a temporary table was created and named home_sales.  Queries were run on average price for a four bedroom house per year, and average price per year built based on factors such as number of rooms and floors, square footage, and view ratings.  Runtime was calculated on the last query. The temporary table was cached and the runtime for the same query on the cached data was calculated and compared to the runtime for the uncached data, which was significantly higher.  The formatted parquet data was then partitioned on the "date_built" field and a temporary table was created.  The runtime for the same query was calculated and compared to the runtime for the cached data, which was slightly higher.  Finally the table was uncached and verified.  The conclusion can be made that caching and then partitioning data can significantly reduce query runtime, with caching creating the biggest impact.
